@@ -60,6 +60,14 @@ numberButtons.forEach((numberButton) => {
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
 	operatorButton.addEventListener("click", () => {
+		if (operator != "") {
+			let ans = operate(a, b, operator);
+			resultDisplay.textContent = ans;
+			calculationDisplay.textContent = a + operator + b;
+			a = ans;
+			b = "";
+			usedDecimal = false;
+		}
 		operator = operatorButton.textContent;
 		if (usedDecimal === true) {
 			usedDecimal = false;
@@ -73,16 +81,25 @@ clearButton.addEventListener("click", reset);
 
 const deleteButton = document.querySelector("#delete");
 deleteButton.addEventListener("click", () => {
-	a = a.slice(0, -1);
-	resultDisplay.textContent = a;
+	if (a.length <= 1) {
+		a = "0";
+		resultDisplay.textContent = a;
+	} else {
+		a = String(a).slice(0, -1);
+		resultDisplay.textContent = a;
+	}
 });
 
 const equalButton = document.querySelector("#equal-button");
 equalButton.addEventListener("click", () => {
-	let ans = operate(a, b, operator);
-	resultDisplay.textContent = ans;
-	calculationDisplay.textContent = a + operator + b;
-	a = ans;
-	b = "";
-	usedDecimal = false;
+	if (a != "" && b != "") {
+		let ans = operate(a, b, operator);
+		resultDisplay.textContent = ans;
+		calculationDisplay.textContent = a + operator + b;
+		a = ans;
+		b = "";
+		usedDecimal = false;
+	} else {
+		return;
+	}
 });
