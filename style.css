@@ -1,4 +1,5 @@
 body {
+	background-color: #ab9f9d;
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
@@ -9,8 +10,9 @@ body {
 }
 
 .container {
-	width: 40%;
-	border: 1px solid black;
+	width: 30%;
+	background-color: #383f51;
+	box-shadow: 5px 5px 10px #383f51;
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
@@ -22,8 +24,8 @@ body {
 
 .display {
 	width: 100%;
-	background-color: greenyellow;
-	border: 1px solid green;
+	background-color: #dddbf1;
+	border: 4px solid #3c4f76;
 	border-radius: 8px;
 	box-sizing: border-box;
 	display: flex;
@@ -36,6 +38,11 @@ body {
 #result {
 	margin: 0;
 	padding: 0;
+	color: #383f51;
+}
+
+#calculation {
+	opacity: 0.7;
 }
 
 .buttons {
