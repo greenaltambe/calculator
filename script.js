@@ -3,11 +3,13 @@ const resultDisplay = document.querySelector("#result");
 let a = "";
 let b = "";
 let operator = "";
+let usedDecimal = false;
 
 function reset() {
 	a = "";
 	b = "";
 	operator = "";
+	usedDecimal = false;
 	resultDisplay.textContent = "0";
 	calculationDisplay.textContent = "0";
 	console.log({ a });
@@ -29,22 +31,24 @@ function operate(a, b, operator) {
 		answer = Number(a) / Number(b);
 	}
 
-	return answer;
+	return Math.round(answer * 100) / 100;
 }
 
 const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach((numberButton) => {
 	numberButton.addEventListener("click", () => {
 		let temp = numberButton.textContent;
+		if (temp === "." && usedDecimal === false) {
+			usedDecimal = true;
+		} else if (temp === "." && usedDecimal === true) {
+			return;
+		}
 		console.log({ b });
 		if (operator === "") {
 			a += temp;
 			resultDisplay.textContent = a;
 		} else {
-			// calculationDisplay.textContent = a + operator + b;
-			// a = String(operate(a, b, operator));
 			b += temp;
-			// operator = "";
 			resultDisplay.textContent = b;
 		}
 
@@ -57,6 +61,9 @@ const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
 	operatorButton.addEventListener("click", () => {
 		operator = operatorButton.textContent;
+		if (usedDecimal === true) {
+			usedDecimal = false;
+		}
 		console.log({ operator });
 	});
 });
@@ -77,4 +84,5 @@ equalButton.addEventListener("click", () => {
 	calculationDisplay.textContent = a + operator + b;
 	a = ans;
 	b = "";
+	usedDecimal = false;
 });
