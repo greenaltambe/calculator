@@ -15,7 +15,7 @@ function reset() {
 	console.log({ operator });
 }
 
-document.addEventListener("onload", reset());
+document.addEventListener("onload", reset);
 
 function operate(a, b, operator) {
 	let answer;
@@ -60,3 +60,6 @@ operatorButtons.forEach((operatorButton) => {
 		console.log({ operator });
 	});
 });
+
+const clearButton = document.querySelector("#clear");
+clearButton.addEventListener("click", reset);
