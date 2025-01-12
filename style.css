@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+
 body {
-	background-color: #aaae8e;
+	background-color: #82a3a1;
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
@@ -7,12 +9,13 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-family: "Orbitron", serif;
 }
 
 .container {
-	width: 30%;
-	background-color: #828e82;
-	box-shadow: 5px 5px 10px #607b7d;
+	width: 300px;
+	background-color: #82a3a1;
+	box-shadow: 4px 4px 16px #465362;
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
@@ -24,8 +27,9 @@ body {
 
 .display {
 	width: 100%;
-	background-color: #e0e0e0;
-	border: 3px solid #aaae8e;
+	background-color: #9fc490;
+	border: 3px solid #465362;
+	color: #465362;
 	border-radius: 8px;
 	box-sizing: border-box;
 	display: flex;
@@ -38,7 +42,6 @@ body {
 #result {
 	margin: 0;
 	padding: 0;
-	color: #3a606e;
 }
 
 #calculation {
@@ -63,17 +66,20 @@ button {
 	flex: 1;
 	padding: 16px 8px;
 	border-radius: 8px;
-	background-color: #e0e0e0;
-	border: 2px solid #aaae8e;
+	background-color: #c0dfa1;
+	border: 1px solid #011936;
+	color: #011936;
 }
 
 .operator {
-	background-color: #607b7d;
-	border: 2px solid #e0e0e0;
+	background-color: #9fc490;
+	border: 1px solid #011936;
+	color: #011936;
 }
 
 #clear,
 #delete {
-	background-color: #607b7d;
-	border: 2px solid #e0e0e0;
+	background-color: #011936;
+	border: 1px solid #c0dfa1;
+	color: #c0dfa1;
 }
