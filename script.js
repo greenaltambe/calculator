@@ -102,9 +102,46 @@ numberButtons.forEach((numberButton) => {
 	});
 });
 
+// Does the same thing as above but with keyboard
+document.addEventListener("keydown", (event) => {
+	if ((event.key >= "0" && event.key <= "9") || event.key === ".") {
+		let temp = event.key;
+
+		if (pressedEqual) {
+			reset();
+			pressedEqual = false;
+		}
+
+		// Check to ensure that decimal is used once for a or b
+		if (temp === "." && usedDecimal === false) {
+			usedDecimal = true;
+		} else if (temp === "." && usedDecimal === true) {
+			return;
+		}
+
+		// Check to ensure either a or b is updated depending on operator is present or not
+		if (operator === "") {
+			if (a === "0") {
+				a = temp;
+			} else {
+				a += temp;
+			}
+			resultDisplay.textContent = a;
+		} else {
+			b += temp;
+			resultDisplay.textContent = b;
+		}
+
+		console.log({ a });
+		console.log({ operator });
+	}
+});
+
+// Reads operator and stores in variable
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
 	operatorButton.addEventListener("click", () => {
+		// If operator was not inputed then update operator otherwise do nothing
 		if (operator != "") {
 			let ans = operate(a, b, operator);
 			resultDisplay.textContent = ans;
@@ -114,6 +151,7 @@ operatorButtons.forEach((operatorButton) => {
 			usedDecimal = false;
 		}
 		operator = operatorButton.textContent;
+		// This is to ensure next number can use decimal
 		if (usedDecimal === true) {
 			usedDecimal = false;
 		}
@@ -121,9 +159,11 @@ operatorButtons.forEach((operatorButton) => {
 	});
 });
 
+// Resets the calculator
 const clearButton = document.querySelector("#clear");
 clearButton.addEventListener("click", reset);
 
+// Deletes the last number
 const deleteButton = document.querySelector("#delete");
 deleteButton.addEventListener("click", () => {
 	if (a.length <= 1) {
@@ -135,6 +175,7 @@ deleteButton.addEventListener("click", () => {
 	}
 });
 
+// Equal button, does the math and displays the answer
 const equalButton = document.querySelector("#equal-button");
 equalButton.addEventListener("click", () => {
 	if (a != "" && b != "") {
