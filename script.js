@@ -1,6 +1,6 @@
 const calculationDisplay = document.querySelector("#calculation");
 const resultDisplay = document.querySelector("#result");
-let a = "";
+let a = "0";
 let b = "";
 let operator = "";
 let usedDecimal = false;
@@ -8,7 +8,7 @@ let pressedEqual = false;
 
 // Function that resets everything on the webpage to 0
 function reset() {
-	a = "";
+	a = "0";
 	b = "";
 	operator = "";
 	usedDecimal = false;
@@ -86,7 +86,11 @@ numberButtons.forEach((numberButton) => {
 
 		// Check to ensure either a or b is updated depending on operator is present or not
 		if (operator === "") {
-			a += temp;
+			if (a === "0") {
+				a = temp;
+			} else {
+				a += temp;
+			}
 			resultDisplay.textContent = a;
 		} else {
 			b += temp;
